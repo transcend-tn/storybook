@@ -1,95 +1,95 @@
 import React, { FC } from "react";
+import clsx from "clsx";
 
 type ButtonTypes = {
   label: string;
-  variant?: string;
+  color?: string;
   outlined?: boolean;
   rounded?: boolean;
   onClick(): void;
 };
 
-const BASE_BUTTON =
-  "outline-none shadow py-2 px-4 font-normal tracking-wider text-lg";
-const PRIMARY_BUTTON = `${BASE_BUTTON} bg-blue-500 hover:bg-blue-700 text-white`;
-const SECONDARY_BUTTON = `${BASE_BUTTON} bg-gray-300 hover:bg-gray-400 text-gray-800`;
-const SUCCESS_BUTTON = `${BASE_BUTTON} bg-green-500 hover:bg-green-600 text-white`;
-const DANGER_BUTTON = `${BASE_BUTTON} bg-red-500 hover:bg-red-600 text-white`;
-const WARNING_BUTTON = `${BASE_BUTTON} bg-yellow-400 hover:bg-yellow-500 text-black`;
-const LIGHT_BUTTON = `${BASE_BUTTON} bg-white hover:bg-gray-100 text-gray-800`;
-const DARK_BUTTON = `${BASE_BUTTON} bg-gray-700 hover:bg-gray-800 text-white`;
+const BASE_BUTTON = "outline-none shadow py-2 px-6 font-normal tracking-wider text-lg";
 
-const OUTLINED_PRIMARY_BUTTON = `${BASE_BUTTON} bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white border border-blue-500 hover:border-transparent`;
-const OUTLINED_SECONDARY_BUTTON = `${BASE_BUTTON} bg-transparent hover:bg-gray-500 text-gray-700 hover:text-white border border-gray-500 hover:border-transparent`;
-const OUTLINED_SUCCESS_BUTTON = `${BASE_BUTTON} bg-transparent hover:bg-green-500 text-green-700 hover:text-white border border-green-500 hover:border-transparent`;
-const OUTLINED_DANGER_BUTTON = `${BASE_BUTTON} bg-transparent hover:bg-red-500 text-red-700 hover:text-white border border-red-500 hover:border-transparent`;
-const OUTLINED_WARNING_BUTTON = `${BASE_BUTTON} bg-transparent hover:bg-yellow-500 text-yellow-700 hover:text-black border border-yellow-500 hover:border-transparent`;
-const OUTLINED_LIGHT_BUTTON = `${BASE_BUTTON} bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-400`;
-const OUTLINED_DARK_BUTTON = `${BASE_BUTTON} bg-transparent hover:bg-gray-700 text-gray-700 hover:text-white border border-gray-500 hover:border-transparent`;
+const setTextColor = (textColor, textOpacity?, hoverTextColor?) => {
+  return clsx(
+    textOpacity && `text-${textColor}-${textOpacity}`,
+    !textOpacity && `text-${textColor}`,
+    hoverTextColor && `hover:text-${hoverTextColor}`
+  );
+};
+const setBackground = (
+  bgColor,
+  bgOpacity,
+  hoverBgColor,
+  hoverBgColorOpacity
+) => {
+  return `${BASE_BUTTON} bg-${bgColor}-${bgOpacity} hover:bg-${hoverBgColor}-${hoverBgColorOpacity}`;
+};
+const setBorder = (brColor = "transparent", brOpacity = "0") => {
+  return `border border-${brColor}-${brOpacity} hover:border-transparent`;
+};
 
-const style = (variant, outlined, rounded) => {
-  switch (variant) {
-    case "primary":
-      if (outlined)
-        if (rounded) return `${OUTLINED_PRIMARY_BUTTON} rounded-full`;
-        else return OUTLINED_PRIMARY_BUTTON;
-      else if (rounded) return `${PRIMARY_BUTTON} rounded-full`;
-      else return PRIMARY_BUTTON;
-    case "secondary":
-      if (outlined)
-        if (rounded) return `${OUTLINED_SECONDARY_BUTTON} rounded-full`;
-        else return OUTLINED_SECONDARY_BUTTON;
-      else if (rounded) return `${SECONDARY_BUTTON} rounded-full`;
-      else return SECONDARY_BUTTON;
+const paint = (color, outlined, rounded) => {
+  switch (color) {
     case "light":
-      if (outlined)
-        if (rounded) return `${OUTLINED_LIGHT_BUTTON} rounded-full`;
-        else return OUTLINED_LIGHT_BUTTON;
-      else if (rounded) return `${LIGHT_BUTTON} rounded-full`;
-      else return LIGHT_BUTTON;
+      return clsx(
+        !outlined &&
+          clsx(
+            setBackground("gray", "100", "gray", "200"),
+            setTextColor("gray", "800", "black")
+          ),
+        outlined &&
+          clsx(
+            setBackground("transparent", "100", "gray", "100"),
+            setTextColor("black", "200", "black"),
+            setBorder("gray", "300")
+          ),
+        rounded && "rounded-full"
+      );
     case "dark":
-      if (outlined)
-        if (rounded) return `${OUTLINED_DARK_BUTTON} rounded-full`;
-        else return OUTLINED_DARK_BUTTON;
-      else if (rounded) return `${DARK_BUTTON} rounded-full`;
-      else return DARK_BUTTON;
-    case "success":
-      if (outlined)
-        if (rounded) return `${OUTLINED_SUCCESS_BUTTON} rounded-full`;
-        else return OUTLINED_SUCCESS_BUTTON;
-      else if (rounded) return `${SUCCESS_BUTTON} rounded-full`;
-      else return SUCCESS_BUTTON;
-    case "warning":
-      if (outlined)
-        if (rounded) return `${OUTLINED_WARNING_BUTTON} rounded-full`;
-        else return OUTLINED_WARNING_BUTTON;
-      else if (rounded) return `${WARNING_BUTTON} rounded-full`;
-      else return WARNING_BUTTON;
-    case "danger":
-      if (outlined)
-        if (OUTLINED_DANGER_BUTTON)
-          return `${OUTLINED_WARNING_BUTTON} rounded-full`;
-        else return OUTLINED_DANGER_BUTTON;
-      else if (rounded) return `${DANGER_BUTTON} rounded-full`;
-      else return DANGER_BUTTON;
-      break;
+      return clsx(
+        !outlined &&
+          clsx(
+            setBackground("gray", "700", "gray", "800"),
+            setTextColor("white")
+          ),
+        outlined &&
+          clsx(
+            setBackground("transparent", "100", "gray", "700"),
+            setTextColor("gray", "700", "white"),
+            setBorder("gray", "500")
+          ),
+        rounded && "rounded-full"
+      );
 
     default:
-      break;
+      return clsx(
+        !outlined &&
+          clsx(
+            setBackground(color, "500", color, "700"),
+            setTextColor("white")
+          ),
+        outlined &&
+          clsx(
+            setBackground("transparent", "100", color, "500"),
+            setTextColor(color, "700", "white"),
+            setBorder(color, "500")
+          ),
+        rounded && "rounded-full"
+      );
   }
 };
 
 export const Button: FC<ButtonTypes> = ({
   onClick,
   label = "Some label",
-  variant,
+  color = "blue",
   outlined = false,
   rounded = false,
 }) => {
   return (
-    <button
-      onClick={onClick}
-      className={variant ? style(variant, outlined, rounded) : BASE_BUTTON}
-    >
+    <button onClick={onClick} className={paint(color, outlined, rounded)}>
       <span>{label}</span>
     </button>
   );

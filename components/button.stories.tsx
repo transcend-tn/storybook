@@ -6,15 +6,17 @@ export default {
   component: Button,
   title: "Button",
   argTypes: {
-    variant: {
+    color: {
       control: {
         type: "select",
         options: [
-          "primary",
-          "secondary",
-          "success",
-          "danger",
-          "warning",
+          "blue",
+          "gray",
+          "green",
+          "red",
+          "yellow",
+          "pink",
+          "indigo",
           "light",
           "dark",
         ],
