@@ -1,14 +1,21 @@
 import React, { FC } from "react";
 import clsx from "clsx";
+import { action } from "@storybook/addon-actions";
 
-type ButtonTypes = {
+export enum buttonType {
+  button='button',
+  submit='submit',
+  reset='reset'
+}
+
+interface ButtonProps {
   label: string;
   color?: string;
+  typeHTML?: buttonType;
   outlined?: boolean;
   rounded?: boolean;
-  onClick(): void;
 };
-
+console.log(buttonType.button)
 const BASE_BUTTON = "outline-none shadow py-2 px-6 font-normal tracking-wider text-lg";
 
 const setTextColor = (textColor, textOpacity?, hoverTextColor?) => {
@@ -81,15 +88,15 @@ const paint = (color, outlined, rounded) => {
   }
 };
 
-export const Button: FC<ButtonTypes> = ({
-  onClick,
-  label = "Some label",
+export const Button: FC<ButtonProps> = ({
+  label = "Button",
   color = "blue",
+  typeHTML = buttonType.button,
   outlined = false,
   rounded = false,
 }) => {
   return (
-    <button onClick={onClick} className={paint(color, outlined, rounded)}>
+    <button className={paint(color, outlined, rounded)} onClick={action("clicked")} type={typeHTML}>
       <span>{label}</span>
     </button>
   );
