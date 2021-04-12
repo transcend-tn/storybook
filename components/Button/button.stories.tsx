@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, buttonType } from './button';
+import { Button, buttonType, colorType } from './button';
 
 export default {
   component: Button,
@@ -9,15 +9,7 @@ export default {
       control: {
         type: "select",
         options: [
-          "blue",
-          "gray",
-          "green",
-          "red",
-          "yellow",
-          "pink",
-          "indigo",
-          "light",
-          "dark",
+          ...Object.keys(colorType).map(key => colorType[key]).filter(k => !(parseInt(k) >= 0))
         ],
       },
     },

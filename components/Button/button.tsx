@@ -8,9 +8,21 @@ export enum buttonType {
   reset='reset'
 }
 
+export enum colorType {
+  blue="blue",
+  gray="gray",
+  green="green",
+  red="red",
+  yellow="yellow",
+  pink="pink",
+  indigo="indigo",
+  light="light",
+  dark="dark",
+}
+
 interface ButtonProps {
   label: string;
-  color?: string;
+  color?: colorType;
   typeHTML?: buttonType;
   outlined?: boolean;
   rounded?: boolean;
@@ -90,7 +102,7 @@ const paint = (color, outlined, rounded) => {
 
 export const Button: FC<ButtonProps> = ({
   label = "Button",
-  color = "blue",
+  color = colorType.blue,
   typeHTML = buttonType.button,
   outlined = false,
   rounded = false,
