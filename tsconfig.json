@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -18,10 +14,9 @@
     "isolatedModules": true,
     "jsx": "react" // <- important!
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [ // <- important!
+  "exclude": ["node_modules"],
+  "include": [
+    // <- important!
     "../types.d.ts",
     "../next-env.d.ts",
     "../**/*.stories.ts",
