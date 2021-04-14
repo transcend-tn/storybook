@@ -10,7 +10,13 @@
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
     "lint": "eslint --ext .ts,.tsx --fix",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "husky": {
     "hooks": {
@@ -43,6 +49,8 @@
     "@typescript-eslint/parser": "^4.22.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.2.2",
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-react": "^7.23.2",
