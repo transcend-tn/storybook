@@ -11,14 +11,12 @@
     "format": "prettier --write",
     "lint": "eslint --ext .ts,.tsx --fix",
     "prepare": "husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
-    "pre-commit": "lint-staged",
+    "pre-commit": "lint-staged --allow-empty",
     "commit": "git-cz"
   },
   "lint-staged": {
-    "*.@(ts|tsx)": [
-      "npm run lint",
-      "npm run format"
-    ]
+    "*.{ts,tsx}": "eslint --fix",
+    "*.{ts,tsx,json,css,scss,md}": "prettier --write"
   },
   "config": {
     "commitizen": {
