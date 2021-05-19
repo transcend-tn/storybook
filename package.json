@@ -6,7 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "storybook": "start-storybook -p 5000"
+    "storybook": "start-storybook -p 5000",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write",
+    "lint": "eslint --ext .ts,.tsx --fix",
+    "prepare": "husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
+    "commit": "git-cz"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --fix",
+    "*.{ts,tsx,json,css,scss,md}": "prettier --write"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "clsx": "^1.1.1",
@@ -15,16 +29,28 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "@storybook/addon-essentials": "^6.2.5",
-    "@storybook/react": "^6.2.3",
-    "@types/node": "^14.14.37",
-    "@types/react": "^17.0.3",
-    "awesome-typescript-loader": "^5.2.1",
-    "babel-loader": "^8.2.2",
-    "postcss-preset-env": "^6.7.0",
-    "react-docgen-typescript-loader": "^3.7.2",
-    "tailwindcss": "^2.1.1",
-    "typescript": "^4.2.3"
+    "@babel/core": "7.13.14",
+    "@commitlint/cli": "12.1.1",
+    "@commitlint/config-conventional": "12.1.1",
+    "@storybook/addon-essentials": "6.2.5",
+    "@storybook/react": "6.2.3",
+    "@types/node": "14.14.37",
+    "@types/react": "17.0.3",
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
+    "awesome-typescript-loader": "5.2.1",
+    "babel-loader": "8.2.2",
+    "commitizen": "4.2.3",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "7.24.0",
+    "eslint-config-prettier": "8.2.0",
+    "eslint-plugin-react": "7.23.2",
+    "husky": "6.0.0",
+    "lint-staged": "10.5.4",
+    "postcss-preset-env": "6.7.0",
+    "pretty-quick": "3.1.0",
+    "react-docgen-typescript-loader": "3.7.2",
+    "tailwindcss": "2.1.1",
+    "typescript": "4.2.3"
   }
 }
