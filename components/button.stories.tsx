@@ -26,6 +26,7 @@ export default {
     docs: {
       page: null,
     },
+    jest: ['button.test.ts'],
   },
 };
 
