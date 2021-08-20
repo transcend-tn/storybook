@@ -1,9 +1,28 @@
-import React from 'react';
-import '../styles/index.css'; // <- applied everywhere in the NextJS application scope
-import type { AppProps /*, AppContext */ } from 'next/app';
+import Layout from "../components/layout/layout";
+import "../styles/globals.css";
+import { ThemeProvider } from "next-themes";
+import { useEffect } from 'react';
+import * as gtag from '../lib/gtag'
+import { useRouter } from 'next/router'
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
-};
+function MyApp({ Component, pageProps }) {
+  const router = useRouter()
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+  return (
+    <ThemeProvider attribute="class">
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+    </ThemeProvider>
+  );
+}
 
 export default MyApp;
