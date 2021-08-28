@@ -6,25 +6,28 @@ export default {
   component: ServiceCard,
   title: 'Transcend/UI Elements/SGVIcon',
   argTypes: {
+    fill: {
+      control: 'color',
+    },
     path: {
       control: {
         type: 'select',
-        options: [
-          ...Object.keys(iconsPath)
-            .map((key) => iconsPath[key])
-            .filter((k) => !(parseInt(k) >= 0)),
-        ],
+        options: iconsPath,
       },
-    }
+    },
   },
 };
 
 const Template = (args) => <ServiceCard {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  width: 100,
-  height: 100,
-  fill: "red",
-  path: iconsPath.facebook
-};
+export const Facebook = Template.bind({});
+Facebook.args = { path: iconsPath.facebook };
+
+export const Github = Template.bind({});
+Github.args = { path: iconsPath.github };
+
+export const Linkedin = Template.bind({});
+Linkedin.args = { path: iconsPath.linkedin };
+
+export const Twitter = Template.bind({});
+Twitter.args = { path: iconsPath.twitter };
