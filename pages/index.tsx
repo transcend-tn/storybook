@@ -1,10 +1,10 @@
-import { ChevronUpIcon } from "@heroicons/react/outline";
-import Head from "next/head";
-import Contact from "../components/contact";
-import Hero from "../components/hero";
-import Services from "../components/services";
-import Team from "../components/team";
-import Technologies from "../components/technologies";
+import { ChevronUpIcon } from '@heroicons/react/outline';
+import Head from 'next/head';
+import Contact from '../components/contact';
+import Hero from '../components/hero';
+import Services from '../components/services';
+import Team from '../components/team';
+import Technologies from '../components/technologies';
 import {
   getSection,
   getServices,
@@ -12,13 +12,13 @@ import {
   getTechnologies,
   getValues,
   getWorkflow,
-} from "../lib/graphcms";
+} from '../lib/graphcms';
 
 export async function getStaticProps() {
-  const hero = await getSection("transcend");
-  const servicesMeta = await getSection("services");
-  const workflowMeta = await getSection("workflow");
-  const valuesMeta = await getSection("values");
+  const hero = await getSection('transcend');
+  const servicesMeta = await getSection('services');
+  const workflowMeta = await getSection('workflow');
+  const valuesMeta = await getSection('values');
   const services = await getServices();
   const technologies = await getTechnologies();
   const workflow = await getWorkflow();

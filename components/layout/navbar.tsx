@@ -1,5 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, Transition } from '@headlessui/react';
 import {
   AnnotationIcon,
   BadgeCheckIcon,
@@ -10,60 +10,60 @@ import {
   TrendingUpIcon,
   UserGroupIcon,
   XIcon,
-} from "@heroicons/react/outline";
-import { useTheme } from "next-themes";
-import Link from "next/link";
-import { Fragment } from "react";
-import ThemeSwitch from "../theme-switch";
-import * as gtag from "../../lib/gtag";
+} from '@heroicons/react/outline';
+import Link from 'next/link';
+import { Fragment } from 'react';
+import ThemeSwitch from '../theme-switch';
+import * as gtag from '../../lib/gtag';
+import SvgIcon from '../SvgIcon/SvgIcon';
+import { iconsPath } from '../SvgIcon/constant.icons';
 
 const navItems = [
   {
-    name: "Services",
+    name: 'Services',
     href: `/#services`,
     icon: CursorClickIcon,
   },
   {
-    name: "Technologies",
+    name: 'Technologies',
     href: `/#technologies`,
     icon: LightningBoltIcon,
   },
   {
-    name: "How We Work",
+    name: 'How We Work',
     href: `/#workflow`,
     icon: TrendingUpIcon,
   },
   {
-    name: "Values",
+    name: 'Values',
     href: `/#values`,
     icon: BadgeCheckIcon,
   },
   {
-    name: "Team",
+    name: 'Team',
     href: `/#team`,
     icon: UserGroupIcon,
   },
 ];
 const callsToAction = [
-  { name: "Blog", href: "/blog", icon: AnnotationIcon },
-  { name: "Contact Sales", href: "/#contact", icon: PhoneIcon },
+  { name: 'Blog', href: '/blog', icon: AnnotationIcon },
+  { name: 'Contact Sales', href: '/#contact', icon: PhoneIcon },
 ];
-const goToSection = (destination) =>  {
+const goToSection = (destination) => {
   return (event: React.MouseEvent) => {
-  gtag.event({
-    action: "SECTION",
-    category: "Navigation",
-    label: "Section Changed",
-    value: destination,
-  });
-}
-}
+    gtag.event({
+      action: 'SECTION',
+      category: 'Navigation',
+      label: 'Section Changed',
+      value: destination,
+    });
+  };
+};
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
   return (
     <div className="navigation top-0 left-0 w-full z-30 duration-300 sticky">
       <Popover className="relative bg-white dark:bg-gray-800 dark:text-gray-300 shadow">
@@ -76,14 +76,16 @@ export default function Navbar() {
                     <a>
                       <span
                         className="sr-only"
-                        onClick={goToSection("Transcend")}
+                        onClick={goToSection('Transcend')}
                       >
                         Transcend
                       </span>
-                      <img
-                        className="h-8 w-auto sm:h-10"
-                        src={theme === "dark" ? "/logo-gray.png" : "/logo.png"}
-                        alt="Transcend"
+                      <SvgIcon
+                        path={iconsPath.transcend}
+                        viewBox="0 0 400 400"
+                        width={50}
+                        height={50}
+                        fill={'currentColor'}
                       />
                     </a>
                   </Link>
@@ -97,7 +99,10 @@ export default function Navbar() {
                 <Popover.Group as="nav" className="hidden md:flex space-x-10">
                   {navItems.map((item) => (
                     <Link href={item.href} key={item.href}>
-                      <a onClick={goToSection(item.name)} className="px-3 py-2 rounded-md text-md font-medium text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-500">
+                      <a
+                        onClick={goToSection(item.name)}
+                        className="px-3 py-2 rounded-md text-md font-medium text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-500"
+                      >
                         {item.name}
                       </a>
                     </Link>
@@ -105,7 +110,10 @@ export default function Navbar() {
                 </Popover.Group>
                 <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                   <Link href="#contact">
-                    <a onClick={goToSection("Contact")}className="uppercase flex-shrink-0 px-4 py-2 mr-3 text-base font-semibold text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-purple-200">
+                    <a
+                      onClick={goToSection('Contact')}
+                      className="uppercase flex-shrink-0 px-4 py-2 mr-3 text-base font-semibold text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-purple-200"
+                    >
                       Contact us
                     </a>
                   </Link>
@@ -133,12 +141,12 @@ export default function Navbar() {
                   <div className="pt-5 pb-6 px-5">
                     <div className="flex items-center justify-between">
                       <div>
-                        <img
-                          className="h-8 w-auto"
-                          src={
-                            theme === "dark" ? "/logo-gray.png" : "/logo.png"
-                          }
-                          alt="Transcend"
+                        <SvgIcon
+                          path={iconsPath.transcend}
+                          viewBox="0 0 400 400"
+                          width={50}
+                          height={50}
+                          fill={'currentColor'}
                         />
                       </div>
                       <div className="-mr-2">
@@ -157,10 +165,6 @@ export default function Navbar() {
                               href={item.href}
                               className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                             >
-                              {/* <item.icon
-                              className="flex-shrink-0 h-6 w-6 text-gray-600"
-                              aria-hidden="true"
-                            /> */}
                               <span className="ml-3 text-base font-medium text-gray-900 dark:text-gray-300">
                                 {item.name}
                               </span>
@@ -190,16 +194,6 @@ export default function Navbar() {
                       </div>
                     </div>
                   </div>
-                  {/* <div className="py-6 px-5 space-y-6">
-                    <div className="grid grid-cols-2 gap-y-4 gap-x-8"></div>
-                    <div>
-                      <Link href="/company/contact-us">
-                        <a className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-600 hover:bg-gray-700">
-                          Contact us
-                        </a>
-                      </Link>
-                    </div>
-                  </div> */}
                 </div>
               </Popover.Panel>
             </Transition>
