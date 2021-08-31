@@ -2,7 +2,7 @@ import { ChevronUpIcon } from '@heroicons/react/outline';
 import Head from 'next/head';
 import Contact from '../components/contact';
 import Hero from '../components/hero';
-import Services from '../components/services';
+import Section from '../components/Section/Section';
 import Team from '../components/team';
 import Technologies from '../components/technologies';
 import {
@@ -11,7 +11,7 @@ import {
   getTeam,
   getTechnologies,
   getValues,
-  getWorkflow,
+  getWorkflow
 } from '../lib/graphcms';
 
 export async function getStaticProps() {
@@ -66,10 +66,10 @@ export default function Home({
         description={hero?.description}
         slug={hero?.slug}
       />
-      <Services bg="dark:bg-gray-700" meta={servicesMeta} data={services} />
+      <Section bg="dark:bg-gray-700" meta={servicesMeta} data={services} />
       <Technologies title="technologies" data={technologies} />
-      <Services bg="dark:bg-gray-700" meta={workflowMeta} data={workflow} />
-      <Services
+      <Section bg="dark:bg-gray-700" meta={workflowMeta} data={workflow} />
+      <Section
         bg="bg-gray-50 dark:bg-gray-800"
         meta={valuesMeta}
         data={values}
