@@ -30,6 +30,7 @@
     "axios": "0.21.1",
     "classnames": "2.3.1",
     "clsx": "1.1.1",
+    "google-map-react": "2.1.10",
     "graphql": "15.5.1",
     "graphql-request": "3.5.0",
     "next": "10.1.3",
