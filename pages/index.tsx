@@ -1,7 +1,7 @@
 import { ChevronUpIcon } from '@heroicons/react/outline';
-import Head from 'next/head';
 import Contact from '../components/contact';
 import Hero from '../components/hero';
+import Layout from '../components/layout/layout';
 import Section from '../components/Section/Section';
 import Team from '../components/team';
 import Technologies from '../components/technologies';
@@ -11,7 +11,7 @@ import {
   getTeam,
   getTechnologies,
   getValues,
-  getWorkflow
+  getWorkflow,
 } from '../lib/graphcms';
 
 export async function getStaticProps() {
@@ -50,16 +50,7 @@ export default function Home({
   team,
 }) {
   return (
-    <div>
-      <Head>
-        <title>Transcend</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Transcend Cyberprise is Tunisian Software Company"
-        />
-      </Head>
-
+    <Layout>
       <Hero
         title={hero?.title}
         subtitle={hero?.subtitle}
@@ -82,6 +73,6 @@ export default function Home({
       >
         <ChevronUpIcon />
       </a>
-    </div>
+    </Layout>
   );
 }
