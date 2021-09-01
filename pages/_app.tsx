@@ -2,7 +2,7 @@ import { ThemeProvider } from 'next-themes';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import * as gtag from '../lib/gtag';
-import '../styles/globals.css';
+import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

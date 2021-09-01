@@ -1,17 +1,17 @@
+import Contact from '@/components/contact';
+import Hero from '@/components/hero';
+import Layout from '@/components/layout/layout';
+import Section from '@/components/Section/Section';
+import Team from '@/components/team';
+import Technologies from '@/components/technologies';
 import { ChevronUpIcon } from '@heroicons/react/outline';
-import Contact from '../components/contact';
-import Hero from '../components/hero';
-import Layout from '../components/layout/layout';
-import Section from '../components/Section/Section';
-import Team from '../components/team';
-import Technologies from '../components/technologies';
 import {
   getSection,
   getServices,
   getTeam,
   getTechnologies,
   getValues,
-  getWorkflow,
+  getWorkflow
 } from '../lib/graphcms';
 
 export async function getStaticProps() {
