@@ -22,7 +22,7 @@ export default function Section({
   meta: SectionMeta;
   data: Section[];
   bg: string;
-}) {
+}): JSX.Element {
   return (
     <section
       id={meta.slug}

@@ -59,11 +59,8 @@ const goToSection = (destination) => {
     });
   };
 };
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
 
-export default function Navbar() {
+export default function Navbar(): JSX.Element {
   return (
     <div className="navigation top-0 left-0 w-full z-30 duration-300 sticky">
       <Popover className="relative bg-white dark:bg-gray-800 dark:text-gray-300 shadow">

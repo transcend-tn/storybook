@@ -3,7 +3,20 @@ import Navbar from './navbar';
 import Footer from './footer';
 import Head from 'next/head';
 
-function Layout({ title, keywords, description, hasNavbar, children }) {
+interface layoutProps {
+  title: string;
+  keywords: string;
+  description: string;
+  hasNavbar: boolean;
+  children: JSX.Element;
+}
+function Layout({
+  title,
+  keywords,
+  description,
+  hasNavbar,
+  children,
+}: layoutProps): JSX.Element {
   return (
     <Fragment>
       <Head>

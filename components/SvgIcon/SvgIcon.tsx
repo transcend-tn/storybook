@@ -1,10 +1,10 @@
 import { FC } from 'react';
 export interface SvgIconProps {
-  width: number;
-  height: number;
-  fill: string;
+  width?: number;
+  height?: number;
+  fill?: string;
   path: string;
-  viewBox: string;
+  viewBox?: string;
 }
 
 const SvgIcon: FC<SvgIconProps> = ({

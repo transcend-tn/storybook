@@ -2,11 +2,11 @@ import GoogleMapReact from 'google-map-react';
 import MapMarker from './MapMarker';
 
 interface contactMapProps {
-  center: {
+  center?: {
     lat: number;
     lng: number;
   };
-  zoom: number;
+  zoom?: number;
 }
 export default function ContactMap({
   center = { lat: 35.83679602257312, lng: 10.63148022053524 },

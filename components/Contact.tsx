@@ -14,7 +14,7 @@ async function sendToApi(data) {
     // toast error message. whatever you wish
   }
 }
-export default function Contact() {
+export default function Contact(): JSX.Element {
   const [data, setData] = useState(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);

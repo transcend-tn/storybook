@@ -7,7 +7,7 @@ export interface ServiceCardProps {
   description: string;
   iconUrl: string;
   delay: number;
-  isTechnology: boolean;
+  isTechnology?: boolean;
 }
 const setImg = (isTechnologu?) => {
   return clsx(
