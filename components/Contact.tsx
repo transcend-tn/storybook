@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import Fade from 'react-reveal/Fade';
 import ContactMap from './Map/ContactMap';
 
@@ -15,29 +15,22 @@ async function sendToApi(data) {
   }
 }
 export default function Contact(): JSX.Element {
-  const [data, setData] = useState(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);
 
   const sendMessage = (e) => {
     e.preventDefault();
     if (emailRef.current.value !== '' && messageRef.current.value !== '') {
-      setData({
+      const data = {
         email: emailRef.current.value,
         message: messageRef.current.value,
         toEmail: process.env.NEXT_PUBLIC_TRANSCEND_EMAIL,
-      });
-    }
-  };
-
-  useEffect(() => {
-    if (data !== null) {
+      };
       sendToApi(data);
       emailRef.current.value = '';
       messageRef.current.value = '';
-      setData(null);
     }
-  }, [data]);
+  };
 
   return (
     <section

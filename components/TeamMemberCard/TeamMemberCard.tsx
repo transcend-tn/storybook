@@ -7,10 +7,10 @@ export interface TeamMemberProps {
   name: string;
   role: string;
   description: string;
-  delay: number;
+  delay?: number;
   icon: {
     url: string;
-  }
+  };
   social: {
     facebook: string;
     twitter: string;
@@ -19,21 +19,22 @@ export interface TeamMemberProps {
   };
 }
 const TeamCard: FC<TeamMemberProps> = ({
-  name="John Doe",
-  icon={url:"https://media.graphcms.com/prQXH90uTDSihTlW3jGv"},
-  role="CEO & Founder",
-  description="John Doe born November 14, 1953 in Brive-la-Gaillarde, is an imitator.",
-  delay=1,
-  social={
-    facebook:"",
-    twitter:"",
-    github:"",
-    linkedin:"",
+  name,
+  icon,
+  role,
+  description,
+  delay = 1,
+  social = {
+    facebook: '',
+    twitter: '',
+    github: '',
+    linkedin: '',
   },
 }) => {
+  const socialTable = Object.keys(social).map((key) => [key, social[key]]);
   return (
     <div key={name} className="p-4 max-w-xs">
-      <Fade  right delay={delay * 300 + 300} distance="20px">
+      <Fade right delay={delay * 300 + 300} distance="20px">
         <div className="text-center mb-4 opacity-90">
           <a href="#" className="block relative">
             <img
@@ -53,18 +54,11 @@ const TeamCard: FC<TeamMemberProps> = ({
           </p>
         </div>
         <div className="pt-8 flex border-t border-gray-200 w-44 mx-auto text-gray-500 items-center justify-between">
-          <a href={social.facebook}>
-            <SvgIcon path={iconsPath.facebook} width={30} height={30} />
-          </a>
-          <a href={social.twitter}>
-            <SvgIcon path={iconsPath.twitter} width={30} height={30} />
-          </a>
-          <a href={social.github}>
-            <SvgIcon path={iconsPath.github} width={30} height={30} />
-          </a>
-          <a href={social.linkedin}>
-            <SvgIcon path={iconsPath.linkedin} width={30} height={30} />
-          </a>
+          {socialTable.map((s) => (
+            <a key={s[1]} href={s[1]}>
+              <SvgIcon path={iconsPath[s[0]]} width={30} height={30} />
+            </a>
+          ))}
         </div>
       </Fade>
     </div>

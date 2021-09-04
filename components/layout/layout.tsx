@@ -11,10 +11,10 @@ interface layoutProps {
   children: JSX.Element;
 }
 function Layout({
-  title,
-  keywords,
-  description,
-  hasNavbar,
+  title = 'Transcend',
+  keywords = 'transcend, web development, web design, react, javascript',
+  description = 'Transcend Cyberprise is Tunisian Software Company',
+  hasNavbar = true,
   children,
 }: layoutProps): JSX.Element {
   return (
@@ -31,10 +31,4 @@ function Layout({
     </Fragment>
   );
 }
-Layout.defaultProps = {
-  title: 'Transcend',
-  description: 'Transcend Cyberprise is Tunisian Software Company',
-  keywords: 'transcend, web development, web design, react, javascript',
-  hasNavbar: true,
-};
 export default Layout;

@@ -1,16 +1,10 @@
 import GoogleMapReact from 'google-map-react';
 import MapMarker from './MapMarker';
+import { contactMapProps, data } from './constants';
 
-interface contactMapProps {
-  center?: {
-    lat: number;
-    lng: number;
-  };
-  zoom?: number;
-}
 export default function ContactMap({
-  center = { lat: 35.83679602257312, lng: 10.63148022053524 },
-  zoom = 18.2,
+  center = { lat: data.center.lat, lng: data.center.lng },
+  zoom = data.zoom,
 }: contactMapProps): JSX.Element {
   return (
     // Important! Always set the container height explicitly

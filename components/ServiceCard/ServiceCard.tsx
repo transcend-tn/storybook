@@ -10,10 +10,7 @@ export interface ServiceCardProps {
   isTechnology?: boolean;
 }
 const setImg = (isTechnologu?) => {
-  return clsx(
-    isTechnologu && `h-12`,
-    !isTechnologu && `mb-4 h-20 w-20 p-1 dark:bg-gray-50`
-  );
+  return clsx(isTechnologu ? `h-12` : `mb-4 h-20 w-20 p-1 dark:bg-gray-50`);
 };
 const ServiceCard: FC<ServiceCardProps> = ({
   name,
