@@ -4,7 +4,7 @@ export interface SectionMeta {
   description: string;
   slug: string;
 }
-export interface Section {
+export interface SectionData {
   name: string;
   description: string;
   icon: {

@@ -1,6 +1,6 @@
 import Fade from 'react-reveal/Fade';
 import ServiceCard from '../ServiceCard/ServiceCard';
-import { Section, SectionMeta } from './section.interface';
+import { SectionData, SectionMeta } from './section.interface';
 
 export default function Section({
   meta,
@@ -8,7 +8,7 @@ export default function Section({
   bg = '',
 }: {
   meta: SectionMeta;
-  data: Section[];
+  data: SectionData[];
   bg: string;
 }): JSX.Element {
   return (
