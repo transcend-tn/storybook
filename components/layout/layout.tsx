@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import Navbar from './navbar';
-import Footer from './footer';
+import Navbar from './Navbar/navbar';
+import Footer from './footer/footer';
 import Head from 'next/head';
 
 interface layoutProps {

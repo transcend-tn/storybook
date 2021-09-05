@@ -1,5 +1,6 @@
 import GoogleMapReact from 'google-map-react';
-import { contactMapProps, data } from './constants';
+import { data } from './map.constants';
+import { contactMapProps } from './map.interface';
 
 export default function ContactMap({
   center = { lat: data.center.lat, lng: data.center.lng },

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import Fade from 'react-reveal/Fade';
 import ContactMap from '../Map/ContactMap';
-import { form } from './constants';
+import { form } from './contact.constants';
 import MapMarker from '../Map/MapMarker';
 
 async function sendToApi(data) {

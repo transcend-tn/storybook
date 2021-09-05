@@ -1,15 +1,9 @@
 import { FC } from 'react';
 import Fade from 'react-reveal/Fade';
 import clsx from 'clsx';
+import { ServiceCardProps } from './serviceCard.interface';
 
-export interface ServiceCardProps {
-  name: string;
-  description: string;
-  iconUrl: string;
-  delay: number;
-  isTechnology?: boolean;
-}
-const setImg = (isTechnologu?) => {
+const setImgClassName = (isTechnologu?) => {
   return clsx(isTechnologu ? `h-12` : `mb-4 h-20 w-20 p-1 dark:bg-gray-50`);
 };
 const ServiceCard: FC<ServiceCardProps> = ({
@@ -25,7 +19,7 @@ const ServiceCard: FC<ServiceCardProps> = ({
         <Fade right delay={delay * 300 + 300} distance="20px">
           {iconUrl && (
             <div className="icon text-5xl">
-              <img className={setImg(isTechnology)} src={iconUrl} />
+              <img className={setImgClassName(isTechnology)} src={iconUrl} />
             </div>
           )}
           <div>

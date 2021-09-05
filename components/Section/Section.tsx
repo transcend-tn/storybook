@@ -1,19 +1,7 @@
 import Fade from 'react-reveal/Fade';
 import ServiceCard from '../ServiceCard/ServiceCard';
+import { Section, SectionMeta } from './section.interface';
 
-interface SectionMeta {
-  title: string;
-  subtitle: string;
-  description: string;
-  slug: string;
-}
-interface Section {
-  name: string;
-  description: string;
-  icon: {
-    url: string;
-  };
-}
 export default function Section({
   meta,
   data,

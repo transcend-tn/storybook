@@ -1,18 +1,13 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Popover, Transition } from '@headlessui/react';
-
-import {
-  HiOutlineAnnotation,
-  HiOutlineMenu,
-  HiOutlinePhone,
-  HiOutlineX,
-} from 'react-icons/hi';
 import Link from 'next/link';
 import React, { Fragment } from 'react';
-import * as gtag from '../../lib/gtag';
-import { iconsPath } from '../SvgIcon/constant.icons';
-import SvgIcon from '../SvgIcon/SvgIcon';
-import ThemeSwitch from '../ThemeSwitch/theme-switch';
+import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
+import * as gtag from '../../../lib/gtag';
+import { iconsPath } from '../../SvgIcon/constant.icons';
+import SvgIcon from '../../SvgIcon/SvgIcon';
+import ThemeSwitch from '../../ThemeSwitch/theme-switch';
+import { callsToAction, topSection } from './navbar.constrants';
 
 const navItems = [
   {
@@ -36,10 +31,7 @@ const navItems = [
     href: `/#team`,
   },
 ];
-const callsToAction = [
-  { name: 'Blog', href: '/blog', icon: HiOutlineAnnotation },
-  { name: 'Contact Sales', href: '/#contact', icon: HiOutlinePhone },
-];
+
 const goToSection = (destination) => {
   return (event: React.MouseEvent) => {
     gtag.event({
@@ -64,9 +56,9 @@ export default function Navbar(): JSX.Element {
                     <a>
                       <span
                         className="sr-only"
-                        onClick={goToSection('Transcend')}
+                        onClick={goToSection(topSection)}
                       >
-                        Transcend
+                        {topSection}
                       </span>
                       <SvgIcon
                         path={iconsPath.transcend}
