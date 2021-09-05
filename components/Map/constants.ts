@@ -4,6 +4,7 @@ export interface contactMapProps {
     lng: number;
   };
   zoom?: number;
+  children?: JSX.Element;
 }
 
 export const data: contactMapProps = {

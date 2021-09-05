@@ -1,53 +1,44 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Popover, Transition } from '@headlessui/react';
+
 import {
-  AnnotationIcon,
-  BadgeCheckIcon,
-  CursorClickIcon,
-  LightningBoltIcon,
-  MenuIcon,
-  PhoneIcon,
-  TrendingUpIcon,
-  UserGroupIcon,
-  XIcon,
-} from '@heroicons/react/outline';
+  HiOutlineAnnotation,
+  HiOutlineMenu,
+  HiOutlinePhone,
+  HiOutlineX,
+} from 'react-icons/hi';
 import Link from 'next/link';
-import { Fragment } from 'react';
-import ThemeSwitch from '../theme-switch';
+import React, { Fragment } from 'react';
 import * as gtag from '../../lib/gtag';
-import SvgIcon from '../SvgIcon/SvgIcon';
 import { iconsPath } from '../SvgIcon/constant.icons';
+import SvgIcon from '../SvgIcon/SvgIcon';
+import ThemeSwitch from '../ThemeSwitch/theme-switch';
 
 const navItems = [
   {
     name: 'Services',
     href: `/#services`,
-    icon: CursorClickIcon,
   },
   {
     name: 'Technologies',
     href: `/#technologies`,
-    icon: LightningBoltIcon,
   },
   {
     name: 'How We Work',
     href: `/#workflow`,
-    icon: TrendingUpIcon,
   },
   {
     name: 'Values',
     href: `/#values`,
-    icon: BadgeCheckIcon,
   },
   {
     name: 'Team',
     href: `/#team`,
-    icon: UserGroupIcon,
   },
 ];
 const callsToAction = [
-  { name: 'Blog', href: '/blog', icon: AnnotationIcon },
-  { name: 'Contact Sales', href: '/#contact', icon: PhoneIcon },
+  { name: 'Blog', href: '/blog', icon: HiOutlineAnnotation },
+  { name: 'Contact Sales', href: '/#contact', icon: HiOutlinePhone },
 ];
 const goToSection = (destination) => {
   return (event: React.MouseEvent) => {
@@ -90,7 +81,7 @@ export default function Navbar(): JSX.Element {
                 <div className="-mr-2 -my-2 md:hidden">
                   <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
                     <span className="sr-only">Open menu</span>
-                    <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                    <HiOutlineMenu className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
                 </div>
                 <Popover.Group as="nav" className="hidden md:flex space-x-10">
@@ -149,7 +140,7 @@ export default function Navbar(): JSX.Element {
                       <div className="-mr-2">
                         <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
                           <span className="sr-only">Close menu</span>
-                          <XIcon className="h-6 w-6" aria-hidden="true" />
+                          <HiOutlineX className="h-6 w-6" aria-hidden="true" />
                         </Popover.Button>
                       </div>
                     </div>

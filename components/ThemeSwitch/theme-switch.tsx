@@ -1,18 +1,17 @@
 import { Switch } from '@headlessui/react';
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import * as gtag from '../lib/gtag';
+import * as gtag from '../../lib/gtag';
 
 export default function ThemeSwitch(): JSX.Element {
   const { theme, setTheme } = useTheme();
-  const dark = theme === 'dark' ? true : false;
-  const [enabled, setEnabled] = useState(dark);
+  const [enabled, setEnabled] = useState(theme === 'light');
   useEffect(() => setEnabled(false), []);
   useEffect(() => {
-    setTheme(enabled ? 'dark' : 'light');
-  }, [enabled, setTheme]);
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  }, [enabled]);
   const handleChange = (nextChecked: boolean) => {
     setEnabled(nextChecked);
     gtag.event({
@@ -24,7 +23,7 @@ export default function ThemeSwitch(): JSX.Element {
   };
   return (
     <>
-      <SunIcon className="h-5" />
+      <HiOutlineSun className="h-5" />
       <Switch
         checked={enabled}
         onChange={handleChange}
@@ -41,7 +40,7 @@ export default function ThemeSwitch(): JSX.Element {
           )}
         />
       </Switch>
-      <MoonIcon className="h-5" />
+      <HiOutlineMoon className="h-5" />
     </>
   );
 }
