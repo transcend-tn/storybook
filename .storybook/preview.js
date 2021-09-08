@@ -4,7 +4,7 @@
 // In this case we just use it to import the stylesheet and inject it
 // in the context of our stories
 
-import "../styles/index.css";
+import "../styles/globals.css";
 import { addDecorator } from '@storybook/react'; // <- or your view layer
 import { withTests } from '@storybook/addon-jest';
 
@@ -15,3 +15,11 @@ addDecorator(
     results,
   })
 );
+
+export const parameters = {
+  options: {
+    storySort: {
+      method: 'alphabetical'
+    }
+  },
+};
